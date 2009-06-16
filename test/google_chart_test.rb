@@ -34,6 +34,10 @@ class GoogleChartTest < ActiveSupport::TestCase
     d = GoogleChart.new(:datas => [50, 25]).datas
     assert_match(/t:([0-9]+)/, d)
   end
+  def test_text_encoding_multi_dimensionnal
+    d = GoogleChart.new(:datas => [50, 25, [50, 25]]).datas
+    assert_match(/s:([0-9]+)|([0-9]+)/i, d)
+  end
   
   def test_linearize
     datas = [50, 25]

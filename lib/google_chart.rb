@@ -114,6 +114,15 @@ class GoogleChart
   end
   
   def text_encode(datas)
-    return datas.join(',') || ''
+    ret = ''
+    datas.each do |d|
+      if d.is_a?(Array)
+        ret << text_encode(d) + '|'
+      else
+        ret << d.to_s + ','
+      end
+    end
+    
+    ret
   end
 end
