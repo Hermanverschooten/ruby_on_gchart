@@ -30,8 +30,16 @@ class GoogleChart
   end
   
   def size
+    if width > height
+      width = 1000 if width > 1000
+      height = 300000 - width if height * width > 300000
+    else
+      height = 1000 if height > 1000
+      width = 300000 - height if width * height > 300000
+    end
+    
     width.to_s + 'x' + height.to_s
-  end  
+  end
   def datas
     datas = linearize(@datas)    
     case encoding
