@@ -94,7 +94,8 @@ class GoogleChart
   SIMPLE_ENCODING_SOURCE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.freeze
   SIMPLE_ENCODING_SIZE_MINUS_ONE = SIMPLE_ENCODING_SOURCE.size - 1
   def simple_encode(datas)
-    max = datas.max
+    max = 0
+    datas.each { |d| max = d if !d.is_a?(Array) and max < d }
     encoded= ''
     
     datas.each do |value|
