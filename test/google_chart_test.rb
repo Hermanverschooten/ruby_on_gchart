@@ -27,7 +27,7 @@ class GoogleChartTest < ActiveSupport::TestCase
   end
   def test_simple_encoding_multi_dimensionnal
     d = GoogleChart.new(:datas => [50, 25, [50, 25]], :encoding => :simple).datas
-    assert_match(/s:([0-z\_\|]+)/i, d)
+    assert_match(/s:([0-z\_]+)|([0-z\_]+)/i, d)
   end
   
   def test_text_encoding
