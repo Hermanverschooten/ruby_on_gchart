@@ -1,13 +1,20 @@
 GoogleChart
 ===========
 
-Introduction goes here.
+This plugin allows you to generate Google Chart graphics within Ruby/Rails.
 
 
 Example
 =======
 
-Example goes here.
+GoogleChart.new({
+    :type => :line,
+    :height => 200,
+    :width => 1000,
+    :encoding => :simple,
+    :datas => [25, 50],
+    :labels => ['First Label', 'Second Label']
+}).to_url
 
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+Copyright (c) 2009 Damien MATHIEU, released under the MIT license
