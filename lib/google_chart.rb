@@ -1,6 +1,6 @@
 class GoogleChart
   attr_accessor :height, :width, :encoding
-  attr_writer :type, :datas, :labels
+  attr_writer :type, :datas, :labels, :colors
   
   def initialize(params = {})
     params = {
@@ -9,7 +9,8 @@ class GoogleChart
       :width => 600,
       :encoding => nil,
       :datas => Array.new,
-      :labels => Array.new
+      :labels => Array.new,
+      :colors => Array.new
     }.merge! params
     
     params.each do |k,v|
@@ -18,7 +19,7 @@ class GoogleChart
   end
   
   def to_url
-    'http://chart.apis.google.com/chart?cht=' + type + '&chs=' + size + '&chd=' + datas + '&chl=' + labels
+    'http://chart.apis.google.com/chart?cht=' + type + '&chs=' + size + '&chd=' + datas + '&chl=' + labels + '&chco=' + colors
   end
   def to_file(path)
     url = URI.parse to_url
@@ -41,7 +42,11 @@ class GoogleChart
   end
   def labels
     @labels.join('|') || ''
+  end
+  def colors
+    @colors.join(',') || ''
   end  
+  
   def type
     case @type
       when :line then return 'lc'
