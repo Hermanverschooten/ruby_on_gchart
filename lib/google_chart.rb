@@ -29,15 +29,7 @@ class GoogleChart
     }
   end
   
-  def size
-    if width > height
-      width = 1000 if width > 1000
-      height = 300000 - width if height * width > 300000
-    else
-      height = 1000 if height > 1000
-      width = 300000 - height if width * height > 300000
-    end
-    
+  def size    
     width.to_s + 'x' + height.to_s
   end
   def datas
@@ -108,7 +100,7 @@ class GoogleChart
     
     datas.each do |value|
       if value.is_a?(Array)
-        encoded << simple_encode(value) + '|'
+        encoded << simple_encode(value) + ','
       else
         if value.respond_to?(:integer?) && value >= 0
           encoded << SIMPLE_ENCODING_SOURCE[SIMPLE_ENCODING_SIZE_MINUS_ONE * value / max]
@@ -123,14 +115,18 @@ class GoogleChart
   
   def text_encode(datas)
     ret = ''
+    
+    i = 0
     datas.each do |d|
       if d.is_a?(Array)
-        ret << text_encode(d) + '|'
+        ret << '|' if i > 0
+        ret << text_encode(d)
       else
-        ret << d.to_s + ','
+        ret << ',' if i > 0
+        ret << d.to_s
       end
-    end
-    
+      i += 1
+    end    
     ret
   end
 end
