@@ -21,7 +21,7 @@ Or install it yourself as:
 
 Example
 =======
-
+```ruby
 GoogleChart::Chart.new({
     :type => :line,
     :height => 200,
@@ -30,7 +30,7 @@ GoogleChart::Chart.new({
     :datas => [25, 50],
     :labels => ['First Label', 'Second Label']
 }).to_url
-
+```
 
 ## Contributing
 
