@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../lib/GoogleChart')
+require File.expand_path(File.dirname(__FILE__) + '/../lib/ruby_on_gchart')
 
 describe GoogleChart::Encoding do
   it "can do a simple encoding" do
