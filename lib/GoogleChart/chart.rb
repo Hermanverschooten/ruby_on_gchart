@@ -1,7 +1,3 @@
-require 'uri'
-require 'net/http'
-require File.expand_path(File.dirname(__FILE__) + '/encoding')
-
 module GoogleChart
   class Chart
     attr_accessor :height, :width, :encoding
