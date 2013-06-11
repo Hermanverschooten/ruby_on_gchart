@@ -103,7 +103,7 @@ module GoogleChart
     def render_options
       @options.map do |k,v|
         "&#{render_option(k,v)}"
-      end.to_s if @options
+      end.join('') if @options
     end
   
     def to_url
